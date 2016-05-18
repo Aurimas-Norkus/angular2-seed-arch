@@ -2,7 +2,6 @@
  * Created by aurimasnorkus on 18/05/16.
  */
 import { Component, Input} from '@angular/core';
-import {Http, HTTP_PROVIDERS} from '@angular/http';
 
 import {TplItem} from "../objects/tlp.item";
 import { CoreService } from './core/core.service';
