@@ -14,9 +14,18 @@ import { TplItem } from '../shared/objects/tlp.item';
 
 export class ArchitectComponent {
 
-  public myValue:TplItem = {
-    name: 'inputObject',
-    tpl: 'views/input'
-  };
+  public items:TplItem[] = [
+    {
+      name: 'title',
+      tpl: 'views/title'
+    },
+    {
+      name: 'input',
+      tpl: 'views/input'
+    },
+    {
+      name: 'button',
+      tpl: 'views/button'
+    },]
 
 }
