@@ -4,6 +4,7 @@ import { HTTP_PROVIDERS} from '@angular/http';
 
 import { AboutComponent } from './+about/index';
 import { HomeComponent } from './+home/index';
+import { ArchitectComponent } from './+architect/index';
 import { NameListService, NavbarComponent, ToolbarComponent } from './shared/index';
 
 @Component({
@@ -21,6 +22,10 @@ import { NameListService, NavbarComponent, ToolbarComponent } from './shared/ind
   {
     path: '/about',
     component: AboutComponent
+  },
+  {
+    path: '/a',
+    component: ArchitectComponent
   }
 ])
 /**
