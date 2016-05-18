@@ -3,5 +3,5 @@
  */
 export class TplItem {
   name: string;
-  data: any;
+  tpl: any;
 }

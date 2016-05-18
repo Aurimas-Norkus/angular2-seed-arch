@@ -5,12 +5,12 @@ import { HTTP_PROVIDERS} from '@angular/http';
 import { AboutComponent } from './+about/index';
 import { HomeComponent } from './+home/index';
 import { ArchitectComponent } from './+architect/index';
-import { NameListService, NavbarComponent, ToolbarComponent } from './shared/index';
+import { NameListService, NavbarComponent, ToolbarComponent, CoreService } from './shared/index';
 
 @Component({
   moduleId: module.id,
   selector: 'sd-app',
-  viewProviders: [NameListService, HTTP_PROVIDERS],
+  viewProviders: [NameListService, HTTP_PROVIDERS, CoreService],
   templateUrl: 'app.component.html',
   directives: [ROUTER_DIRECTIVES, NavbarComponent, ToolbarComponent]
 })

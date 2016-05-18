@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { TplComponent } from '../shared/tpl/index';
+import { TplComponent,  } from '../shared/tpl/index';
 import { TplItem } from '../shared/objects/tlp.item';
 
 @Component({
@@ -15,8 +15,8 @@ import { TplItem } from '../shared/objects/tlp.item';
 export class ArchitectComponent {
 
   public myValue:TplItem = {
-    name: 'one',
-    data: 'data'
+    name: 'inputObject',
+    tpl: 'views/input'
   };
 
 }
