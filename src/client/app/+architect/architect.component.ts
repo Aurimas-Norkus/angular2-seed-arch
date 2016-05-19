@@ -26,6 +26,19 @@ export class ArchitectComponent {
     {
       name: 'button',
       tpl: 'views/button'
-    },]
+    },];
+
+  // test to see if change will be see after time
+  change() {
+    setTimeout(() => {
+      this.items[0].name = 'new title';
+    }, 5000);
+
+  }
+
+  // init component, executed before rendering
+  ngOnInit() {
+    this.change();
+  }
 
 }

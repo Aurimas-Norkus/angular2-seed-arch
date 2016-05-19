@@ -4,7 +4,7 @@
 import { Component, Input } from '@angular/core';
 
 import { TplItem } from "../objects/tlp.item";
-import { CoreService } from './core/core.service';
+import { TplService } from './tpl/tpl.service';
 
 
 function compileToComponent(templateUrl, directives) {
@@ -27,16 +27,15 @@ export class TplComponent {
   @Input() value:TplItem;
   unique: string;
 
-  constructor(public coreService: CoreService) {
+  constructor(public tplService: TplService) {
   }
 
   ngOnInit() {
     this.unique = new Date().getTime().toString();
     let tplUrl = `app/shared/tpl/${this.value.tpl}.html`;
-    console.log('Changing', tplUrl);
-    this.coreService._dcl.loadAsRoot(
+    this.tplService._dcl.loadAsRoot(
       compileToComponent(tplUrl, []),
       `[tpl="${this.unique}"]`,
-      this.coreService._injector);
+      this.tplService._injector);
   }
 }

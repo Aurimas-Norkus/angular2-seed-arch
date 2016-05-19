@@ -2,7 +2,7 @@ import { Injectable, DynamicComponentLoader, Injector } from '@angular/core';
 
 // todo rename service to tpl service
 @Injectable()
-export class CoreService {
+export class TplService {
 
   names: string[] = [];
 
