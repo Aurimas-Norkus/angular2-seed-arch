@@ -5,6 +5,7 @@ import { Injectable, DynamicComponentLoader, Injector } from '@angular/core';
 export class TplService {
 
   names: string[] = [];
+  test:string="test name";
 
   constructor(public _injector: Injector, public _dcl: DynamicComponentLoader) {}
 
