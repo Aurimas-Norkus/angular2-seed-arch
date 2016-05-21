@@ -16,6 +16,14 @@ export class ArchitectComponent {
 
   public items:TplItem[] = [
     {
+      tpl: 'views/common/input',
+      type: 'text',
+      name: 'architect.input',
+      placeholder: 'Enter name',
+      title: 'User Name',
+      disabled: false
+    },
+    {
       tpl: 'views/title',
       name: 'title',
       title: 'Title Opa'

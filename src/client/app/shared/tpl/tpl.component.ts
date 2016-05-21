@@ -79,4 +79,8 @@ export class TplComponent implements OnInit {
         });
     }
   }
+
+  log() {
+    console.log(`Debug ${this.data.tpl}`, this.data);
+  }
 }
