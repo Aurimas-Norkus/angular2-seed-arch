@@ -7,6 +7,10 @@ import { HomeComponent } from './+home/index';
 import { ArchitectComponent } from './+architect/index';
 import { NameListService, NavbarComponent, ToolbarComponent, TplService } from './shared/index';
 
+/**
+ * This class represents the main application component. Within the @Routes annotation is the configuration of the
+ * applications routes, configuring the paths for the lazy loaded components (HomeComponent, AboutComponent).
+ */
 @Component({
   moduleId: module.id,
   selector: 'sd-app',
@@ -28,10 +32,4 @@ import { NameListService, NavbarComponent, ToolbarComponent, TplService } from '
     component: ArchitectComponent
   }
 ])
-/**
- * This class represents the main application component.
- * Within the @Routes annotation is the configuration of the
- * applications routes, configuring the paths for the lazy
- * loaded components (HomeComponent, AboutComponent).
- */
 export class AppComponent {}
