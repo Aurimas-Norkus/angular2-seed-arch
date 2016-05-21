@@ -14,6 +14,7 @@
  * 7. Hooks for extend service - Done
  * 8. Extend html adding required values - todo
  * 9. Dynamic load of component - todo
+ * 10. Child using tpl component - todo
  * */
 
 import {Component,OnInit,Input} from '@angular/core';
@@ -77,7 +78,7 @@ export class TplComponent implements OnInit {
           component.data = this.data;
 
           // Add component data to service
-          this.tplService.tpl[this.data.name] = this.data;
+          if(this.data.name) this.tplService.tpl[this.data.name] = this.data;
 
           // Hooks
           if(this.data.init) this.data.init();

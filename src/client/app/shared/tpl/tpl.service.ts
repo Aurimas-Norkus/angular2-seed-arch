@@ -11,23 +11,18 @@ export class TplService {
         init: () => {
           console.log('Init of input element');
         },
-        data: {
-          testByName: 'ex by name',
-          testObject: {}
-        }
+        testByName: 'ex by name',
+        testObject: {}
       }
     },
     byTemplate: {
       'common/input/input': {
-        data:{
-          testByTemplate:'ex by tpl'
-        }
+        testByTemplate:'ex by tpl'
       }
     }
   };
 
-  constructor() {
-  }
+  constructor() {}
 
   init() {
     console.log('Tpl service init', this);

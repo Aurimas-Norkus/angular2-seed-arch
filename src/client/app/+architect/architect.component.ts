@@ -21,7 +21,13 @@ export class ArchitectComponent {
       name: 'architect.input',
       placeholder: 'Enter name',
       title: 'User Name',
-      disabled: false
+      disabled: false,
+      children:[
+        {
+          name: 'button',
+          tpl: 'views/button'
+        }
+      ]
     },
     {
       tpl: 'views/title',
