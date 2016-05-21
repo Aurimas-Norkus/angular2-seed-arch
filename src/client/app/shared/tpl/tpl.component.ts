@@ -10,8 +10,8 @@
  * 3. Bind to element value - Done
  * 4. Add created element object to service - Done
  * 5. Configured by json - Done
- * 6. Extend element object data with other object or function from service by name and template name - todo
- * 7. Hooks for extend service - todo
+ * 6. Extend element object data with other object or function from service by name and template name - Done
+ * 7. Hooks for extend service - Done
  * 8. Extend html adding required values - todo
  * 9. Dynamic load of component - todo
  * */
@@ -74,11 +74,14 @@ export class TplComponent implements OnInit {
           if(this.data.name) Object.assign(this.data, this.tplService.extend.byName[this.data.name]);
           if(this.data.tpl) Object.assign(this.data, this.tplService.extend.byTemplate[this.data.tpl]);
 
-
           component.data = this.data;
 
           // Add component data to service
           this.tplService.tpl[this.data.name] = this.data;
+
+          // Hooks
+          if(this.data.init) this.data.init();
+
         });
     } else {
       // dynamic template built (TODO driven by some incoming settings)
