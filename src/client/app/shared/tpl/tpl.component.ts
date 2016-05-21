@@ -1,18 +1,21 @@
 /**
  * Created by aurimasnorkus on 21/05/16.
  */
-import {Component,OnInit} from '@angular/core';
+import {Component,OnInit,Input} from '@angular/core';
 import {ComponentResolver,ViewChild,ViewContainerRef} from '@angular/core';
 import {FORM_DIRECTIVES} from "@angular/common";
 
 import { IHaveDynamicData, TplComponentBuilder } from './tpl.component.builder';
+import { TplItem } from "../objects/tlp.item";
 
 @Component({
-  selector: 'dynamic-holder',
+  selector: 'tpl',
   templateUrl: 'app/shared/tpl/tpl.component.html',
   providers: [TplComponentBuilder],
 })
-export class DynamicHolder implements OnInit {
+export class TplComponent implements OnInit {
+  @Input() data:TplItem;
+  //---------------------------------------------------------
   public entity:{ description: string };
   // reference for a <div> with #
   @ViewChild('dynamicContentPlaceHolder', {read: ViewContainerRef})

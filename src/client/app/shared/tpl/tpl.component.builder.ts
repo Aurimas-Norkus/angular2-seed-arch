@@ -17,7 +17,7 @@ export class TplComponentBuilder {
   public CreateTemplate() {
     let template = `
       <div>
-          <h3>Dynamic component</h3>
+          <h3>Dynamic component - injected data</h3>
 
           with dynamic data:
           <dl>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { DynamicHolder } from '../shared/tpl/index';
+import { TplComponent } from '../shared/tpl/index';
 import { TplItem } from '../shared/objects/tlp.item';
 
 @Component({
@@ -8,7 +8,7 @@ import { TplItem } from '../shared/objects/tlp.item';
   selector: 'architect',
   templateUrl: 'architect.component.html',
   styleUrls: ['architect.component.css'],
-  directives: [DynamicHolder]
+  directives: [TplComponent]
 })
 
 
