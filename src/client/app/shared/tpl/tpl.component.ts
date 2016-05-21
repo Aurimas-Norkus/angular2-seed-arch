@@ -41,7 +41,7 @@ export class TplComponent implements OnInit {
   // ng loader and our custom builder
   constructor(protected componentResolver:ComponentResolver,
               protected tplComponentBuilder:TplComponentBuilder,
-              protected tplService: TplService) {
+              protected tplService:TplService) {
   }
 
   public ngOnInit() {
@@ -69,6 +69,11 @@ export class TplComponent implements OnInit {
 
           // and here we have access to our dynamic component
           let component:IHaveDynamicData = dynamicComponent.instance;
+
+          // working with data, extending
+          if(this.data.name) Object.assign(this.data, this.tplService.extend.byName[this.data.name]);
+          if(this.data.tpl) Object.assign(this.data, this.tplService.extend.byTemplate[this.data.tpl]);
+
 
           component.data = this.data;
 
