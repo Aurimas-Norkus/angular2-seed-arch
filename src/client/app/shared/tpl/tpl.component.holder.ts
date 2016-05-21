@@ -9,15 +9,7 @@ import { IHaveDynamicData, TplComponentBuilder } from './tpl.component.builder';
 
 @Component({
   selector: 'dynamic-holder',
-  template: `
-<div>
-  <h1>Dynamic content holder</h1>
-  <hr />
-  <div #dynamicContentPlaceHolder></div>
-  <hr />
-  change description <input [(ngModel)]="entity.description" style="width:500px" />
-</div>
-`,
+  templateUrl: 'app/shared/tpl/tpl.component.html',
   providers: [TplComponentBuilder],
 })
 export class DynamicHolder implements OnInit {
