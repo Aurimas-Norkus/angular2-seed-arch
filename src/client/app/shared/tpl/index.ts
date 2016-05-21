@@ -3,4 +3,4 @@
  */
 export * from './tpl.component.builder';
 export * from './tpl.component';
-export * from './tpl/tpl.service';
+export * from './tpl.service';

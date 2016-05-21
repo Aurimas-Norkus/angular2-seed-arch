@@ -1,11 +1,27 @@
 /**
  * Created by aurimasnorkus on 21/05/16.
  */
+/*
+ * Name: Tpl component
+ * Task: Dynamic html content load and manage
+ * Minimal requirement :
+ * 1. Dynamic load of html - Done
+ * 2. Bind to object and change view on data change - Done
+ * 3. Bind to element value - Done
+ * 4. Add created element object to service - Done
+ * 5. Configured by json - Done
+ * 6. Extend element object data with other object or function from service by name and template name - todo
+ * 7. Hooks for extend service - todo
+ * 8. Extend html adding required values - todo
+ * 9. Dynamic load of component - todo
+ * */
+
 import {Component,OnInit,Input} from '@angular/core';
 import {ComponentResolver,ViewChild,ViewContainerRef} from '@angular/core';
 import {FORM_DIRECTIVES} from "@angular/common";
 
 import { IHaveDynamicData, TplComponentBuilder } from './tpl.component.builder';
+import { TplService } from './tpl.service';
 import { TplItem } from "../objects/tlp.item";
 
 @Component({
@@ -24,11 +40,12 @@ export class TplComponent implements OnInit {
 
   // ng loader and our custom builder
   constructor(protected componentResolver:ComponentResolver,
-              protected tplComponentBuilder:TplComponentBuilder) {
+              protected tplComponentBuilder:TplComponentBuilder,
+              protected tplService: TplService) {
   }
 
   public ngOnInit() {
-    console.log('Data to component', this);
+    //console.log('Data to component', this);
     // just init the entity for this example
     this.entity = {
       description: "The description of the user instance, passed as (shared) reference"
@@ -54,6 +71,9 @@ export class TplComponent implements OnInit {
           let component:IHaveDynamicData = dynamicComponent.instance;
 
           component.data = this.data;
+
+          // Add component data to service
+          this.tplService.tpl[this.data.name] = this.data;
         });
     } else {
       // dynamic template built (TODO driven by some incoming settings)

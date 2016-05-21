@@ -32,4 +32,13 @@ import { NameListService, NavbarComponent, ToolbarComponent, TplService } from '
     component: ArchitectComponent
   }
 ])
-export class AppComponent {}
+export class AppComponent {
+  constructor(public tplService:TplService) {
+
+  }
+
+  ngOnInit() {
+    console.log('App starts', this);
+    this.tplService.init();
+  }
+}
