@@ -43,6 +43,7 @@ export class TplComponentBuilder {
 
       public name:string;
       public entity:{ description: string };
+      public data:any;
     }
 
     return CustomDynamicComponent;
@@ -56,9 +57,7 @@ export class TplComponentBuilder {
       directives: injectDirectives,
     })
     class CustomDynamicComponent implements IHaveDynamicData {
-
-      public name:string;
-      public entity:{ description: string };
+      public data: any;
     }
 
     return CustomDynamicComponent;

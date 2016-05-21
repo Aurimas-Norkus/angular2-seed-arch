@@ -5,3 +5,7 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.element:hover{
+  border: 1px solid darkblue;
+}

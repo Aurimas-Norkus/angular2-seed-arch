@@ -1,9 +1,9 @@
-<div>
-  <h1>Tpl component</h1>
-  <hr/>
+<div class="element">
   <p>Data to component: {{data|json}}</p>
+
   <hr/>
+  Change description <input [(ngModel)]="entity.description" style="width:500px"/>
+  <hr/>
+
   <div #dynamicContentPlaceHolder></div>
-  <hr/>
-  change description <input [(ngModel)]="entity.description" style="width:500px"/>
 </div>

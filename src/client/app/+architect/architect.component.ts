@@ -16,8 +16,9 @@ export class ArchitectComponent {
 
   public items:TplItem[] = [
     {
+      tpl: 'views/title',
       name: 'title',
-      tpl: 'views/title'
+      title: 'Title Opa'
     },
     {
       name: 'input',
@@ -26,14 +27,17 @@ export class ArchitectComponent {
     {
       name: 'button',
       tpl: 'views/button'
-    },];
+    },
+    {
+      name: 'Default ',
+      tpl: 'default'
+    }];
 
   // test to see if change will be see after time
   change() {
     setTimeout(() => {
       this.items[0].name = 'new title';
     }, 5000);
-
   }
 
   // init component, executed before rendering
