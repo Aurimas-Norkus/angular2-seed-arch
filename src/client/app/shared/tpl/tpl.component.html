@@ -1,5 +1,7 @@
-<div class="element">
-  <div [attr.tpl]="unique"></div>
-  <h5>tpl component:<br>{{value | json}}</h5>
+<div>
+  <h1>Dynamic content holder</h1>
+  <hr />
+  <div #dynamicContentPlaceHolder></div>
+  <hr />
+  change description <input [(ngModel)]="entity.description" />
 </div>
-
