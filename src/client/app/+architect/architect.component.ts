@@ -18,14 +18,40 @@ export class ArchitectComponent {
     {
       tpl: 'views/common/input',
       type: 'text',
-      name: 'architect.input',
+      name: 'architect.name',
       placeholder: 'Enter name',
       title: 'User Name',
       disabled: false,
       children: [
         {
           name: 'button',
-          tpl: 'views/button'
+          tpl: 'views/button',
+          children: [
+            {
+              name: "button2",
+              tpl: 'views/button'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      tpl: 'views/common/input',
+      type: 'password',
+      name: 'architect.pass',
+      placeholder: 'Enter pass',
+      title: 'User Pass',
+      disabled: false,
+      children: [
+        {
+          name: 'button',
+          tpl: 'views/button',
+          children: [
+            {
+              name: "button2",
+              tpl: 'views/button'
+            }
+          ]
         }
       ]
     }];
@@ -34,12 +60,13 @@ export class ArchitectComponent {
   change() {
     setTimeout(() => {
       this.items[0].name = 'new title';
+      //console.log('timeout');
     }, 5000);
   }
 
   // init component, executed before rendering
   ngOnInit() {
-    this.change();
+    //this.change();
   }
 
 }
