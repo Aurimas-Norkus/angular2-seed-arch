@@ -7,58 +7,19 @@ import { TplItem } from "../objects/tlp.item";
 import { TplService } from './tpl.service';
 import { TplComponent } from './tpl.component';
 
-
-export interface IHaveDynamicData {
-  name?: string
-  entity?: { description: string }
-}
-
 export class TplComponentBuilder {
-
-  public CreateTemplate() {
-    let template = `
-      <div>
-          <h3>Dynamic component - injected data</h3>
-
-          with dynamic data:
-          <dl>
-            <dt>string value 'name'</dt>
-            <dd><b>{{name}}</b></dd>
-            <dt>reference value 'entity' and its 'description'</dt>
-            <dd><b>{{entity?.description}}</b></dd>
-          </dl>
-      </div>`;
-
-    return template;
-  }
-
   //---------------------------------------------------------
-  public CreateComponent(tpl:string, injectDirectives:any[]):any {
+  public CreateComponentLocal(unique, tpl:string, injectDirectives:any[]):any {
 
     @Component({
-      selector: 'dynamic-component',
-      template: tpl,
-      directives: injectDirectives,
-    })
-    class CustomDynamicComponent implements IHaveDynamicData {
-
-      public name:string;
-      public entity:{ description: string };
-      public data:any;
-    }
-
-    return CustomDynamicComponent;
-  }
-  //---------------------------------------------------------
-  public CreateComponentLocal(tpl:string, injectDirectives:any[]):any {
-
-    @Component({
-      selector: 'dynamic-component',
+      selector: 'dynamic-component' + unique,
       templateUrl: `app/shared/tpl/${tpl}.html`,
       directives: injectDirectives,
     })
-    class CustomDynamicComponent implements IHaveDynamicData {
-      public data: any;
+    class CustomDynamicComponent {
+      public data:TplItem;
+
+      constructor(){}
     }
 
     return CustomDynamicComponent;

@@ -22,29 +22,12 @@ export class ArchitectComponent {
       placeholder: 'Enter name',
       title: 'User Name',
       disabled: false,
-      children:[
+      children: [
         {
           name: 'button',
           tpl: 'views/button'
         }
       ]
-    },
-    {
-      tpl: 'views/title',
-      name: 'title',
-      title: 'Title Opa'
-    },
-    {
-      name: 'input',
-      tpl: 'views/input'
-    },
-    {
-      name: 'button',
-      tpl: 'views/button'
-    },
-    {
-      name: 'Default ',
-      tpl: 'default'
     }];
 
   // test to see if change will be see after time

@@ -21,7 +21,7 @@ import {Component,OnInit,Input} from '@angular/core';
 import {ComponentResolver,ViewChild,ViewContainerRef} from '@angular/core';
 import {FORM_DIRECTIVES} from "@angular/common";
 
-import { IHaveDynamicData, TplComponentBuilder } from './tpl.component.builder';
+import { TplComponentBuilder } from './tpl.component.builder';
 import { TplService } from './tpl.service';
 import { TplItem } from "../objects/tlp.item";
 
@@ -34,81 +34,52 @@ import { TplItem } from "../objects/tlp.item";
 export class TplComponent implements OnInit {
   @Input() data:TplItem;
   //---------------------------------------------------------
-  public entity:{ description: string };
   // reference for a <div> with #
   @ViewChild('dynamicContentPlaceHolder', {read: ViewContainerRef})
   protected dynamicComponentTarget:ViewContainerRef;
-
+  //---------------------------------------------------------
   // ng loader and our custom builder
   constructor(protected componentResolver:ComponentResolver,
               protected tplComponentBuilder:TplComponentBuilder,
               protected tplService:TplService) {
   }
-
+  //---------------------------------------------------------
   public ngOnInit() {
-    //console.log('Data to component', this);
-    // just init the entity for this example
-    this.entity = {
-      description: "The description of the user instance, passed as (shared) reference"
-    };
-
-    if (this.data.tpl !== 'default') {
-      // dynamic template built (TODO driven by some incoming settings)
-      //var template = this.tplComponentBuilder.CreateTemplate();
-
+    //---------------------------------------------------------
+    let createComponent = (data) => {
       // now we get built component, just to load it
-      var dynamicComponent = this.tplComponentBuilder.CreateComponentLocal(this.data.tpl, FORM_DIRECTIVES);
-
+      let dynamicComponent = this.tplComponentBuilder.CreateComponentLocal(new Date().getTime().toString(), data.tpl, FORM_DIRECTIVES);
+      //---------------------------------------------------------
       // we have a component and its target
       this.componentResolver
         .resolveComponent(dynamicComponent)
-        .then((factory:ng.ComponentFactory<IHaveDynamicData>) => {
-
+        .then((factory:ng.ComponentFactory<TplItem>) => {
           // Instantiates a single {@link Component} and inserts its Host View
           //   into this container at the specified `index`
           let dynamicComponent = this.dynamicComponentTarget.createComponent(factory, 0);
-
+          console.log(dynamicComponent.instance);
+          //---------------------------------------------------------
           // and here we have access to our dynamic component
-          let component:IHaveDynamicData = dynamicComponent.instance;
-
+          let component:TplItem = dynamicComponent.instance;
+          //---------------------------------------------------------
           // working with data, extending
-          if(this.data.name) Object.assign(this.data, this.tplService.extend.byName[this.data.name]);
-          if(this.data.tpl) Object.assign(this.data, this.tplService.extend.byTemplate[this.data.tpl]);
-
-          component.data = this.data;
-
+          if (data.name) Object.assign(data, this.tplService.extend.byName[data.name]);
+          if (data.tpl) Object.assign(data, this.tplService.extend.byTemplate[data.tpl]);
+          //---------------------------------------------------------
+          // Add extended and element data to component
+          component.data = data;
+          //---------------------------------------------------------
           // Add component data to service
-          if(this.data.name) this.tplService.tpl[this.data.name] = this.data;
-
+          if (data.name) this.tplService.tpl[data.name] = data;
+          //---------------------------------------------------------
           // Hooks
-          if(this.data.init) this.data.init();
-
+          if (data.init) data.init();
         });
-    } else {
-      // dynamic template built (TODO driven by some incoming settings)
-      var template = this.tplComponentBuilder.CreateTemplate();
-
-      // now we get built component, just to load it
-      var dynamicComponent = this.tplComponentBuilder.CreateComponent(template, FORM_DIRECTIVES);
-
-      // we have a component and its target
-      this.componentResolver
-        .resolveComponent(dynamicComponent)
-        .then((factory:ng.ComponentFactory<IHaveDynamicData>) => {
-
-          // Instantiates a single {@link Component} and inserts its Host View
-          //   into this container at the specified `index`
-          let dynamicComponent = this.dynamicComponentTarget.createComponent(factory, 0);
-
-          // and here we have access to our dynamic component
-          let component:IHaveDynamicData = dynamicComponent.instance;
-
-          component.name = "The name passed to component as a value";
-          component.entity = this.entity;
-        });
-    }
+    };
+    //---------------------------------------------------------
+    createComponent(this.data);
   }
-
+  //---------------------------------------------------------
   log() {
     console.log(`Debug ${this.data.tpl}`, this.data);
   }
