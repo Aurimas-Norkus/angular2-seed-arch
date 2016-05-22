@@ -28,10 +28,30 @@ export class ArchitectComponent {
           tpl: 'views/button',
           children: [
             {
-              name: "button2",
-              tpl: 'views/button'
+              name: 'Super',
+              tpl: 'views/button',
+              children: [
+                {
+                  name: 'button',
+                  tpl: 'views/button',
+                  children: [
+                    {
+                      name: 'button',
+                      tpl: 'views/button'
+                    }
+                  ]
+                },
+                {
+                  name: 'button',
+                  tpl: 'views/button'
+                }
+              ]
             }
           ]
+        },
+        {
+          name: 'button',
+          tpl: 'views/button'
         }
       ]
     },
@@ -45,13 +65,7 @@ export class ArchitectComponent {
       children: [
         {
           name: 'button',
-          tpl: 'views/button',
-          children: [
-            {
-              name: "button2",
-              tpl: 'views/button'
-            }
-          ]
+          tpl: 'views/button'
         }
       ]
     }];

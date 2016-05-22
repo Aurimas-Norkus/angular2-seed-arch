@@ -1,1 +1,7 @@
-<button>Button</button>
+<div>
+  <button>Button</button>
+  <div>
+    <tpl *ngFor="let item of data.children" [data]="item"></tpl>
+  </div>
+</div>
+

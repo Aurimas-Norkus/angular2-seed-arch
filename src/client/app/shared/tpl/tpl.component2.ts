@@ -14,8 +14,7 @@
  * 7. Hooks for extend service - Done
  * 8. Extend html adding required values - todo
  * 9. Dynamic load of component - todo
- * 10. Child using tpl component - Done
- * 11. Refactor - todo
+ * 10. Child using tpl component - todo
  * */
 
 import {Component,OnInit,Input,Output} from '@angular/core';
@@ -25,7 +24,7 @@ import {FORM_DIRECTIVES} from "@angular/common";
 import { TplComponentBuilder } from './tpl.component.builder';
 import { TplService } from './tpl.service';
 import { TplItem } from "../objects/tlp.item";
-import { TplComponent } from './tpl.component2';
+import { TplComponent } from './tpl.component';
 
 @Component({
   selector: 'tpl',
