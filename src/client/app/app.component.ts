@@ -5,6 +5,8 @@ import { HTTP_PROVIDERS} from '@angular/http';
 import { AboutComponent } from './+about/index';
 import { HomeComponent } from './+home/index';
 import { ArchitectComponent } from './+architect/index';
+import { StyleguideComponent } from './+styleguide/index';
+import { SkeletonComponent } from './+skeleton/index';
 import { NameListService, NavbarComponent, ToolbarComponent, TplService } from './shared/index';
 
 /**
@@ -28,8 +30,16 @@ import { NameListService, NavbarComponent, ToolbarComponent, TplService } from '
     component: AboutComponent
   },
   {
-    path: '/a',
+    path: '/architecture',
     component: ArchitectComponent
+  },
+  {
+    path: '/styleguide',
+    component: StyleguideComponent
+  },
+  {
+    path: '/skeleton',
+    component: SkeletonComponent
   }
 ])
 export class AppComponent {

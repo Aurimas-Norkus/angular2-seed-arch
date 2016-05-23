@@ -259,6 +259,8 @@ export class SeedConfig {
    * @type {InjectableDependency[]}
    */
   APP_ASSETS: InjectableDependency[] = [
+    { src: `${this.CSS_SRC}/normalize.css`, inject: true, vendor: false },
+    { src: `${this.CSS_SRC}/skeleton.css`, inject: true, vendor: false },
     { src: `${this.CSS_SRC}/main.css`, inject: true, vendor: false }
   ];
 
