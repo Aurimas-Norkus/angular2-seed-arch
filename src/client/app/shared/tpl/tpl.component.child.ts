@@ -56,15 +56,13 @@ export class TplComponent {
       this.componentResolver
         .resolveComponent(dynamicComponent)
         .then((factory:ng.ComponentFactory<TplItem>) => {
-          // Instantiates a single {@link Component} and inserts its Host View
-          //   into this container at the specified `index`
+          // Instantiates a single {@link Component} and inserts its Host View into this container at the specified `index`
           let dynamicComponent = this.dynamicComponentTarget.createComponent(factory, 0);
-          //console.log(dynamicComponent.instance);
           //---------------------------------------------------------
-          // and here we have access to our dynamic component
+          // Here we have access to our dynamic component
           let component:TplItem = dynamicComponent.instance;
           //---------------------------------------------------------
-          // working with data, extending
+          // Working with data, extending
           if (data.name) Object.assign(data, this.tplService.extend.byName[data.name]);
           if (data.tpl) Object.assign(data, this.tplService.extend.byTemplate[data.tpl]);
           //---------------------------------------------------------

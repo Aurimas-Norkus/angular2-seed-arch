@@ -12,7 +12,7 @@
  * 5. Configured by json - Done
  * 6. Extend element object data with other object or function from service by name and template name - Done
  * 7. Hooks for extend service - Done
- * 8. Extend html adding required values - todo
+ * 8. Extend html adding required values - Done
  * 9. Dynamic load of component - todo
  * 10. Child using tpl component - Done
  * 11. Refactor - todo
@@ -25,7 +25,7 @@ import {FORM_DIRECTIVES} from "@angular/common";
 import { TplComponentBuilder } from './tpl.component.builder';
 import { TplService } from './tpl.service';
 import { TplItem } from "../objects/tlp.item";
-import { TplComponent } from './tpl.component2';
+import { TplComponent } from './tpl.component.child';
 
 @Component({
   selector: 'tpl',
@@ -57,15 +57,13 @@ export class TplComponent {
       this.componentResolver
         .resolveComponent(dynamicComponent)
         .then((factory:ng.ComponentFactory<TplItem>) => {
-          // Instantiates a single {@link Component} and inserts its Host View
-          //   into this container at the specified `index`
+          // Instantiates a single {@link Component} and inserts its Host View into this container at the specified `index`
           let dynamicComponent = this.dynamicComponentTarget.createComponent(factory, 0);
-          //console.log(dynamicComponent.instance);
           //---------------------------------------------------------
-          // and here we have access to our dynamic component
+          // Here we have access to our dynamic component
           let component:TplItem = dynamicComponent.instance;
           //---------------------------------------------------------
-          // working with data, extending
+          // Working with data, extending
           if (data.name) Object.assign(data, this.tplService.extend.byName[data.name]);
           if (data.tpl) Object.assign(data, this.tplService.extend.byTemplate[data.tpl]);
           //---------------------------------------------------------
