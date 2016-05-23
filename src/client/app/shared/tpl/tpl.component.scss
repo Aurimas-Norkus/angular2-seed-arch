@@ -6,7 +6,7 @@
   position: relative;
 
   &:hover {
-    >.debug {
+    > .debug {
       background-color: whitesmoke;
     }
   }
@@ -27,5 +27,7 @@
     }
   }
 }
+
+
 
 

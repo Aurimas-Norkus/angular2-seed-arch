@@ -16,19 +16,29 @@ export class StyleguideComponent {
 
   public items:TplItem[] = [
     {
-      tpl: 'views/common/inputs/input',
-      type: 'text',
-      name: 'architect.name',
-      placeholder: 'Enter name',
-      title: 'User Name',
-      disabled: false,
+      tpl: 'views/common/layout/styleguide-element',
+      children: [
+        {
+          tpl: 'views/common/inputs/input',
+          type: 'text',
+          name: 'architect.name',
+          placeholder: 'Enter name',
+          title: 'User Name',
+          disabled: false
+        }
+      ]
     },
     {
-      tpl: 'views/common/buttons/button',
-      type: 'password',
-      name: 'architect.pass',
-      placeholder: 'Enter pass',
-      title: 'User Pass',
-      disabled: false
+      tpl: 'views/common/layout/styleguide-element',
+      children: [
+        {
+          tpl: 'views/common/buttons/button',
+          type: 'password',
+          name: 'architect.pass',
+          placeholder: 'Enter pass',
+          title: 'User Pass',
+          disabled: false
+        }
+      ]
     }];
 }

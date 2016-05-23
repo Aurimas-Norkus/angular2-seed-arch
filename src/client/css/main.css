@@ -1,3 +1,9 @@
 tpl {
   display: flex;
+  min-width: 300px;
+}
+
+.styleguide-element {
+  display: flex;
+  justify-content: space-between;
 }
