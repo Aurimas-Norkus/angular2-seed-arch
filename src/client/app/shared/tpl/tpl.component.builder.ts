@@ -13,7 +13,7 @@ export class TplComponentBuilder {
 
     @Component({
       selector: 'dynamic-component' + unique,
-      templateUrl: `app/shared/tpl/${tpl}.html`,
+      templateUrl: `app/shared/${tpl}.html`,
       directives: injectDirectives,
     })
     class CustomDynamicComponent {

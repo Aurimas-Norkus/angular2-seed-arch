@@ -19,7 +19,7 @@ export class ArchitectComponent {
       tpl:'super-component'
     },
     {
-      tpl: 'views/common/input',
+      tpl: 'views/common/inputs/input',
       type: 'text',
       name: 'architect.name',
       placeholder: 'Enter name',
@@ -59,7 +59,7 @@ export class ArchitectComponent {
       ]
     },
     {
-      tpl: 'views/common/input',
+      tpl: 'views/common/inputs/input',
       type: 'password',
       name: 'architect.pass',
       placeholder: 'Enter pass',
