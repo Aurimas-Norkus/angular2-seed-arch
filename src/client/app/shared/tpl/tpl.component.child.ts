@@ -12,9 +12,10 @@
  * 5. Configured by json - Done
  * 6. Extend element object data with other object or function from service by name and template name - Done
  * 7. Hooks for extend service - Done
- * 8. Extend html adding required values - todo
+ * 8. Extend html adding required values - Done
  * 9. Dynamic load of component - todo
- * 10. Child using tpl component - todo
+ * 10. Child using tpl component - Done
+ * 11. Refactor - todo
  * */
 
 import {Component,OnInit,Input,Output} from '@angular/core';
@@ -23,8 +24,9 @@ import {FORM_DIRECTIVES} from "@angular/common";
 
 import { TplComponentBuilder } from './tpl.component.builder';
 import { TplService } from './tpl.service';
-import { TplItem } from "../objects/tlp.item";
+import { TplItem } from "../interfaces/tlp.item";
 import { TplComponent } from './tpl.component';
+import { SuperComponent } from '../widgets/super/super.component';
 
 @Component({
   selector: 'tpl',
@@ -45,12 +47,17 @@ export class TplComponent {
               protected tplComponentBuilder:TplComponentBuilder,
               protected tplService:TplService) {
   }
+
   //---------------------------------------------------------
   public ngOnInit() {
     //---------------------------------------------------------
     let createComponent = (data) => {
-      // now we get built component, just to load it
-      let dynamicComponent = this.tplComponentBuilder.CreateComponentLocal(new Date().getTime().toString(), data.tpl, [TplComponent, FORM_DIRECTIVES]);
+      let dynamicComponent;
+      if (data.tpl.substring(0, 6) === 'views/') {
+        dynamicComponent = this.tplComponentBuilder.CreateComponentLocal(new Date().getTime().toString(), data.tpl, [TplComponent, FORM_DIRECTIVES]);
+      } else {
+        dynamicComponent = SuperComponent;
+      }
       //---------------------------------------------------------
       // we have a component and its target
       this.componentResolver
@@ -67,7 +74,11 @@ export class TplComponent {
           if (data.tpl) Object.assign(data, this.tplService.extend.byTemplate[data.tpl]);
           //---------------------------------------------------------
           // Add extended and element data to component
-          component.data = data;
+          if (component.data) {
+            Object.assign(component.data, data);
+            Object.assign(data, component.data); // Required because component can have data that tpl don't have
+          }
+          else component.data = data;
           //---------------------------------------------------------
           // Add component data to service
           if (data.name) this.tplService.tpl[data.name] = data;
@@ -79,6 +90,7 @@ export class TplComponent {
     //---------------------------------------------------------
     createComponent(this.data);
   }
+
   //---------------------------------------------------------
   log() {
     console.log(`Debug ${this.data.tpl}`, this.data);

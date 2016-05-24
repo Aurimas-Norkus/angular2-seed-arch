@@ -3,7 +3,7 @@
  */
 import { Component } from '@angular/core';
 
-import { TplItem } from "../objects/tlp.item";
+import { TplItem } from "../interfaces/tlp.item";
 import { TplService } from './tpl.service';
 import { TplComponent } from './tpl.component';
 

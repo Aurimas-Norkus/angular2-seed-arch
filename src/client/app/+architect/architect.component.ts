@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { TplComponent } from '../shared/tpl/index';
-import { TplItem } from '../shared/objects/tlp.item';
+import { TplItem } from '../shared/interfaces/tlp.item';
 
 @Component({
   moduleId: module.id,
@@ -15,6 +15,9 @@ import { TplItem } from '../shared/objects/tlp.item';
 export class ArchitectComponent {
 
   public items:TplItem[] = [
+    {
+      tpl:'super-component'
+    },
     {
       tpl: 'views/common/input',
       type: 'text',
