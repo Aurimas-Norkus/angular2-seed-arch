@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { TplComponent } from '../shared/tpl/index';
 import { TplItem } from '../shared/interfaces/tlp.item';
 

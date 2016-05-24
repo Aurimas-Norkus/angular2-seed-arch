@@ -7,7 +7,7 @@ import { HomeComponent } from './+home/index';
 import { ArchitectComponent } from './+architect/index';
 import { StyleguideComponent } from './+styleguide/index';
 import { SkeletonComponent } from './+skeleton/index';
-import { NameListService, NavbarComponent, ToolbarComponent, TplService } from './shared/index';
+import { NavbarComponent, TplService } from './shared/index';
 
 /**
  * This class represents the main application component. Within the @Routes annotation is the configuration of the
@@ -16,19 +16,11 @@ import { NameListService, NavbarComponent, ToolbarComponent, TplService } from '
 @Component({
   moduleId: module.id,
   selector: 'sd-app',
-  viewProviders: [NameListService, HTTP_PROVIDERS, TplService],
+  viewProviders: [HTTP_PROVIDERS, TplService],
   templateUrl: 'app.component.html',
-  directives: [ROUTER_DIRECTIVES, NavbarComponent, ToolbarComponent]
+  directives: [ROUTER_DIRECTIVES, NavbarComponent]
 })
 @Routes([
-  {
-    path: '/',
-    component: HomeComponent
-  },
-  {
-    path: '/about',
-    component: AboutComponent
-  },
   {
     path: '/architecture',
     component: ArchitectComponent

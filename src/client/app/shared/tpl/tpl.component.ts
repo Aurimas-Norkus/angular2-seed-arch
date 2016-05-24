@@ -29,10 +29,11 @@ import { TplComponent } from './tpl.component.child';
 import { SuperComponent } from '../widgets/super/super.component';
 
 @Component({
+  moduleId: module.id,
   selector: 'tpl',
-  templateUrl: 'app/shared/tpl/tpl.component.html',
+  templateUrl: 'tpl.component.html',
   providers: [TplComponentBuilder],
-  styleUrls: ['app/shared/tpl/tpl.component.css'],
+  styleUrls: ['tpl.component.css'],
   directives: []
 })
 export class TplComponent {
