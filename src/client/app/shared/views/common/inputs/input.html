@@ -1,0 +1,14 @@
+<div class="input-container">
+  <label *ngIf="data.title">
+    {{data.title}}
+  </label>
+  <input [title]="data.title"
+         [type]="data.type"
+         [placeholder]="data.placeholder"
+         [(ngModel)]="data.value"
+         [disabled]="data.disabled"
+         autocomplete>
+  <div>
+    <tpl *ngFor="let item of data.children" [data]="item"></tpl>
+  </div>
+</div>
