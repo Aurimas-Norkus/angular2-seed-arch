@@ -1,0 +1,33 @@
+.element {
+  padding: 15px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  &:hover {
+    > .debug {
+      background-color: whitesmoke;
+    }
+  }
+
+  .debug {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    font-size: 10px;
+    margin: 0;
+    z-index: 100;
+    color: #106cc8;
+    padding: 0 5px;
+
+    &:hover {
+      background-color: #e1e1e1;
+      cursor: pointer;
+    }
+  }
+}
+
+
+
+
