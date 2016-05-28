@@ -12,8 +12,9 @@ export class TplComponentBuilder {
   public CreateComponentLocal(unique, tpl:string, injectDirectives:any[]):any {
 
     @Component({
+      moduleId: module.id,
       selector: 'dynamic-component' + unique,
-      templateUrl: `app/shared/${tpl}.html`,
+      templateUrl: `../${tpl}.html`,
       directives: injectDirectives,
     })
     class CustomDynamicComponent {
