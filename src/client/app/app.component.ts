@@ -8,6 +8,7 @@ import { ArchitectComponent } from './+architect/index';
 import { StyleguideComponent } from './+styleguide/index';
 import { SkeletonComponent } from './+skeleton/index';
 import { NavbarComponent, TplService } from './shared/index';
+import { ApiService } from './shared/services/Api.service';
 
 /**
  * This class represents the main application component. Within the @Routes annotation is the configuration of the
@@ -16,7 +17,7 @@ import { NavbarComponent, TplService } from './shared/index';
 @Component({
   moduleId: module.id,
   selector: 'sd-app',
-  viewProviders: [HTTP_PROVIDERS, TplService],
+  viewProviders: [HTTP_PROVIDERS, TplService, ApiService],
   templateUrl: 'app.component.html',
   directives: [ROUTER_DIRECTIVES, NavbarComponent]
 })
@@ -35,12 +36,13 @@ import { NavbarComponent, TplService } from './shared/index';
   }
 ])
 export class AppComponent {
-  constructor(public tplService:TplService) {
+  constructor(public tplService:TplService, public apiService:ApiService) {
 
   }
 
   ngOnInit() {
     console.log('App starts', this);
     this.tplService.init();
+    this.apiService.init();
   }
 }
